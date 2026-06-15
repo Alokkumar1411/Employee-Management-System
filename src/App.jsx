@@ -7,33 +7,57 @@ import { AuthContext } from './context/AuthProvider'
 
 const App = () => {
 
+  const Authdata= useContext(AuthContext)
+  const [loggedInUserData, setloggedInUserData] = useState(null)
 const [User, setUser] = useState(null)
+
+// useEffect(() => {
+//   if(Authdata){
+//     const loggedInUser =JSON.parse(localStorage.getItem("loggedInUser")) 
+//     if(loggedInUser){
+//       setUser(loggedInUser)
+//     }
+
+//   }
+
+  
+// }, [Authdata])
+// console.log(User)
+
 
 // ye function check krega email or pass match ho bhi rhe hai
 const handleLogin =(email,password) =>{
   if(email=='admin@me.com' && password=='123'){
     setUser('admin')
+    localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
   }
-  else if(email=='user@me.com' && password==123){
-    setUser('employee')
+  else if(Authdata ){
+    const employee= Authdata.employees.find((e)=>e.email==email && e.password == password)
+    if(employee){
+       setUser('employee')
+       setloggedInUserData(employee)
+    localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
+    }
+   
   }
   else{
     alert('Invalid Credentials')
   }
 }
 
-const data= useContext(AuthContext)
-console.log(data)
 
-  return (
-    <>
-    {/* // means agr user nhi hai ya empty hai to login page khol do vrna empty */}
-   {!User? <Login handleLogin={handleLogin}/>: ''} 
-    {/* <EmployeeDashboard/> */}
-    {User=='admin' ? <AdminDashboard/> : <EmployeeDashboard/>}
-    {/* <AdminDashboard/> */}
-    </>
-  )
+
+return (
+  <>
+    {!User ? (
+      <Login handleLogin={handleLogin} />
+    ) : User === 'admin' ? (
+      <AdminDashboard />
+    ) : ( User== 'employee' ? 
+      <EmployeeDashboard  data={loggedInUserData}  />
+    :null)}
+  </>
+)
 }
 
 export default App

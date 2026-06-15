@@ -1,8 +1,15 @@
 const employees = [
   {
     id: 1,
+    firstName: "Arjun",
     email: "employee1@example.com",
     password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         taskTitle: "Design Login Page",
@@ -39,8 +46,15 @@ const employees = [
 
   {
     id: 2,
+    firstName: "Sneha",
     email: "employee2@example.com",
     password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         taskTitle: "Database Backup",
@@ -77,8 +91,15 @@ const employees = [
 
   {
     id: 3,
+    firstName: "Rohan",
     email: "employee3@example.com",
     password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 0,
+      failed: 1,
+    },
     tasks: [
       {
         taskTitle: "Create Dashboard UI",
@@ -115,8 +136,15 @@ const employees = [
 
   {
     id: 4,
+    firstName: "Priya",
     email: "employee4@example.com",
     password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         taskTitle: "SEO Optimization",
@@ -153,8 +181,15 @@ const employees = [
 
   {
     id: 5,
+    firstName: "Aman",
     email: "employee5@example.com",
     password: "123",
+    taskCounts: {
+      active: 2,
+      newTask: 1,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         taskTitle: "Client Meeting",
@@ -199,6 +234,7 @@ const admin = [
 ];
 
 export const setLocalStorage = ()=>{
+  // console.log('hello')
   localStorage.setItem('employees',JSON.stringify(employees)) // agr local storage me kuch save krna hai to ham ye use krtw hai
   localStorage.setItem('admin',JSON.stringify(admin)) // agr local storage me kuch save krna hai to ham ye use krtw hai
 }
