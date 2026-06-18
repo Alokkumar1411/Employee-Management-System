@@ -9,8 +9,9 @@ html,body{
 }
 
 body{
-  background-color: #111;
+  background-color: black;
 }
+
 #tasklist::-webkit-scrollbar{
   display: none;
 }

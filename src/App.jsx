@@ -8,21 +8,17 @@ import { AuthContext } from './context/AuthProvider'
 const App = () => {
 
   const Authdata= useContext(AuthContext)
-  const [loggedInUserData, setloggedInUserData] = useState(null)
-const [User, setUser] = useState(null)
+  const [loggedInUserData, setloggedInUserData] = useState(null) // emplpoyee ka data isme h 
+const [User, setUser] = useState(null) // user ya to admin hoga ya emoployee
 
-// useEffect(() => {
-//   if(Authdata){
-//     const loggedInUser =JSON.parse(localStorage.getItem("loggedInUser")) 
-//     if(loggedInUser){
-//       setUser(loggedInUser)
-//     }
-
-//   }
-
-  
-// }, [Authdata])
-// console.log(User)
+useEffect(()=>{
+  const loggedInUser=localStorage.getItem('loggedInUser')
+  if(loggedInUser){
+    const userData=JSON.parse(loggedInUser)
+    setUser(userData.role)
+    setloggedInUserData(userData.data)
+  }
+},[])
 
 
 // ye function check krega email or pass match ho bhi rhe hai
@@ -36,7 +32,7 @@ const handleLogin =(email,password) =>{
     if(employee){
        setUser('employee')
        setloggedInUserData(employee)
-    localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}))
+    localStorage.setItem('loggedInUser',JSON.stringify({role:'employee',data:employee}))
     }
    
   }
