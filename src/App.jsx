@@ -21,7 +21,7 @@ useEffect(()=>{
 },[])
 
 
-// ye function check krega email or pass match ho bhi rhe hai
+// ye function check krega email and pass correct hai
 const handleLogin =(email,password) =>{
   if(email=='admin@me.com' && password=='123'){
     setUser('admin')

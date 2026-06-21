@@ -9,7 +9,7 @@ const Header = ({ data }) => {
  }
   return (
     <div className='flex items-end justify-between'>
-      <h1 className='text-2xl font-serif'>
+      <h1 className='text-2xl text-white font-serif'>
         Hello, <br />
         <span className='text-4xl font-semibold'>
           {username} 👋
