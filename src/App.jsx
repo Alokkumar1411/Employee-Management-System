@@ -48,9 +48,9 @@ return (
     {!User ? (
       <Login handleLogin={handleLogin} />
     ) : User === 'admin' ? (
-      <AdminDashboard />
+      <AdminDashboard changeUser={setUser} />
     ) : ( User== 'employee' ? 
-      <EmployeeDashboard  data={loggedInUserData}  />
+      <EmployeeDashboard changeUser={setUser}  data={loggedInUserData}  />
     :null)}
   </>
 )
