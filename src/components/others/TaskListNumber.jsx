@@ -5,6 +5,10 @@ import { BsLightningFill } from "react-icons/bs";
 import { TfiNotepad } from "react-icons/tfi";
 
 const TaskListNumber = ({ data }) => {
+  const newTaskCount = data.tasks.filter(task => task.newTask).length
+const activeTaskCount = data.tasks.filter(task => task.active).length
+const completedTaskCount = data.tasks.filter(task => task.completed).length
+const failedTaskCount = data.tasks.filter(task => task.failed).length
   return (
     <div className="flex mt-10 justify-between gap-5 screen">
       <div className="bg-[#0D1A2E] border-2 text-white border-[#134778] rounded-xl flex justify-baseline pl-9 gap-10 items-center w-[45%] py-6  ">
@@ -12,7 +16,7 @@ const TaskListNumber = ({ data }) => {
           <TfiNotepad />
         </div>
         <div>
-          <h2 className="text-3xl font-semibold">{data.taskCounts.newTask}</h2>
+          <h2 className="text-3xl font-semibold">{newTaskCount}</h2>
           <h3 className="text-xl mt-3 font-medium">New Task</h3>
         </div>
       </div>
@@ -23,7 +27,7 @@ const TaskListNumber = ({ data }) => {
 
         <div>
           <h2 className="text-3xl font-semibold">
-            {data.taskCounts.completed}
+            {completedTaskCount}
           </h2>
           <h3 className="text-xl mt-1 font-medium">Completed Task</h3>
         </div>
@@ -33,7 +37,7 @@ const TaskListNumber = ({ data }) => {
           <BsLightningFill />
         </div>
         <div>
-          <h2 className="text-3xl font-semibold">{data.taskCounts.active}</h2>
+          <h2 className="text-3xl font-semibold">{activeTaskCount}</h2>
           <h3 className="text-xl mt-3 font-medium">Active Task</h3>
         </div>
       </div>
@@ -42,7 +46,7 @@ const TaskListNumber = ({ data }) => {
           <RxCrossCircled />
         </div>
         <div>
-          <h2 className="text-3xl font-semibold">{data.taskCounts.failed}</h2>
+          <h2 className="text-3xl font-semibold">{failedTaskCount}</h2>
           <h3 className="text-xl mt-1 font-medium">Failed Task</h3>
         </div>
       </div>
